@@ -1,237 +1,662 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Chicc">
+  <meta name="keywords" content="">
   
-  <title>RocketMQ | Chicc&#39;s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="部署方式Docker-compose 方式部署： 12docker pull apacherocketmq&#x2F;rocketmq-dashboard:latestdocker pull apache&#x2F;rocketmq:latest  123456789101112131415161718192021222324252627282930313233343536373839version: &#x27;3">
+    <meta name="description" content="部署方式 Docker-compose 方式部署： 12docker pull apacherocketmq&#x2F;rocketmq-dashboard:latestdocker pull apache&#x2F;rocketmq:latest 123456789101112131415161718192021222324252627282930313233343536373839version: &#x27;3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RocketMQ">
 <meta property="og:url" content="http://example.com/2024/07/01/RocketMQ/index.html">
 <meta property="og:site_name" content="Chicc&#39;s Blog">
-<meta property="og:description" content="部署方式Docker-compose 方式部署： 12docker pull apacherocketmq&#x2F;rocketmq-dashboard:latestdocker pull apache&#x2F;rocketmq:latest  123456789101112131415161718192021222324252627282930313233343536373839version: &#x27;3">
+<meta property="og:description" content="部署方式 Docker-compose 方式部署： 12docker pull apacherocketmq&#x2F;rocketmq-dashboard:latestdocker pull apache&#x2F;rocketmq:latest 123456789101112131415161718192021222324252627282930313233343536373839version: &#x27;3">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-01T14:10:50.000Z">
 <meta property="article:modified_time" content="2024-07-01T14:11:19.229Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Chicc's Blog" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
+<meta property="article:author" content="Chicc">
+<meta name="twitter:card" content="summary_large_image">
   
   
   
-<link rel="stylesheet" href="/css/style.css">
+  <title>RocketMQ - Chicc&#39;s Blog</title>
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
   
 <meta name="generator" content="Hexo 7.2.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Chicc&#39;s Blog</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main"><article id="post-RocketMQ" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/07/01/RocketMQ/" class="article-date">
-  <time class="dt-published" datetime="2024-07-01T14:10:50.000Z" itemprop="datePublished">2024-07-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      RocketMQ
-    </h1>
   
 
-      </header>
+  <header>
     
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="部署方式"><a href="#部署方式" class="headerlink" title="部署方式"></a>部署方式</h1><p>Docker-compose 方式部署：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull apacherocketmq/rocketmq-dashboard:latest</span><br><span class="line">docker pull apache/rocketmq:latest</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.3&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">namesrv:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">apache/rocketmq:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">rmqnamesrv</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">9876</span><span class="string">:9876</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">JAVA_OPT_EXT:</span> <span class="string">&quot;-server -Xms512m -Xmx512m&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/home/max/Desktop/rocketmq/broker/logs:/home/rocketmq/logs</span></span><br><span class="line">    <span class="attr">command:</span> <span class="string">sh</span> <span class="string">mqnamesrv</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">  <span class="attr">broker1:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">apache/rocketmq:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">rmqbroker</span></span><br><span class="line">    <span class="attr">links:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">namesrv</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">10909</span><span class="string">:10909</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">10911</span><span class="string">:10911</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">10912</span><span class="string">:10912</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">NAMESRV_ADDR:</span> <span class="string">namesrv:9876</span></span><br><span class="line">      <span class="attr">JAVA_OPT_EXT:</span> <span class="string">&quot;-server -Xms512m -Xmx512m&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/home/max/Desktop/rocketmq/broker/logs:/home/rocketmq/logs</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/home/max/Desktop/rocketmq/broker/store:/home/rocketmq/store</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/home/max/Desktop/rocketmq/broker/conf/broker.conf:/opt/rocketmq/conf/broker.conf</span></span><br><span class="line">    <span class="attr">command:</span> <span class="string">sh</span> <span class="string">mqbroker</span> <span class="string">-c</span> <span class="string">/opt/rocketmq/conf/broker.conf</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">  <span class="attr">dashbord:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">apacherocketmq/rocketmq-dashboard:latest</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">8080</span><span class="string">:8080</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">JAVA_OPTS:</span> <span class="string">&quot;-Drocketmq.namesrv.addr=namesrv:9876&quot;</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="RocketMQ-基础概念："><a href="#RocketMQ-基础概念：" class="headerlink" title="RocketMQ 基础概念："></a>RocketMQ 基础概念：</h1><h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><hr>
-<h2 id="1-消息模型（Message-Model）"><a href="#1-消息模型（Message-Model）" class="headerlink" title="1 消息模型（Message Model）"></a>1 消息模型（Message Model）</h2><p>RocketMQ 主要由 Producer、Broker、Consumer 三部分组成，其中 Producer 负责生产消息，Consumer 负责消费消息，Broker 负责存储消息。Broker 在实际部署过程中对应一台服务器，每个 Broker 可以存储多个 Topic 的消息，每个 Topic 的消息也可以分片存储于不同的 Broker。Message Queue 用于存储消息的物理地址，每个 Topic 中的消息地址存储于多个 Message Queue 中。ConsumerGroup 由多个 Consumer 实例构成。</p>
-<h2 id="2-消息生产者（Producer）"><a href="#2-消息生产者（Producer）" class="headerlink" title="2 消息生产者（Producer）"></a>2 消息生产者（Producer）</h2><p> 负责生产消息，一般由业务系统负责生产消息。一个消息生产者会把业务应用系统里产生的消息发送到 broker 服务器。RocketMQ 提供多种发送方式，同步发送、异步发送、顺序发送、单向发送。同步和异步方式均需要 Broker 返回确认信息，单向发送不需要。</p>
-<h2 id="3-消息消费者（Consumer）"><a href="#3-消息消费者（Consumer）" class="headerlink" title="3 消息消费者（Consumer）"></a>3 消息消费者（Consumer）</h2><p> 负责消费消息，一般是后台系统负责异步消费。一个消息消费者会从 Broker 服务器拉取消息、并将其提供给应用程序。从用户应用的角度而言提供了两种消费形式：拉取式消费、推动式消费。</p>
-<h2 id="4-主题（Topic）"><a href="#4-主题（Topic）" class="headerlink" title="4 主题（Topic）"></a>4 主题（Topic）</h2><p>  表示一类消息的集合，每个主题包含若干条消息，每条消息只能属于一个主题，是 RocketMQ 进行消息订阅的基本单位。</p>
-<h2 id="5-代理服务器（Broker-Server）"><a href="#5-代理服务器（Broker-Server）" class="headerlink" title="5 代理服务器（Broker Server）"></a>5 代理服务器（Broker Server）</h2><p>消息中转角色，负责存储消息、转发消息。代理服务器在 RocketMQ 系统中负责接收从生产者发送来的消息并存储、同时为消费者的拉取请求作准备。代理服务器也存储消息相关的元数据，包括消费者组、消费进度偏移和主题和队列消息等。</p>
-<h2 id="6-名字服务（Name-Server）"><a href="#6-名字服务（Name-Server）" class="headerlink" title="6 名字服务（Name Server）"></a>6 名字服务（Name Server）</h2><p> 名称服务充当路由消息的提供者。生产者或消费者能够通过名字服务查找各主题相应的 Broker IP 列表。多个 Namesrv 实例组成集群，但相互独立，没有信息交换。</p>
-<h2 id="7-拉取式消费（Pull-Consumer）"><a href="#7-拉取式消费（Pull-Consumer）" class="headerlink" title="7 拉取式消费（Pull Consumer）"></a>7 拉取式消费（Pull Consumer）</h2><p>  Consumer 消费的一种类型，应用通常主动调用 Consumer 的拉消息方法从 Broker 服务器拉消息、主动权由应用控制。一旦获取了批量消息，应用就会启动消费过程。</p>
-<h2 id="8-推动式消费（Push-Consumer）"><a href="#8-推动式消费（Push-Consumer）" class="headerlink" title="8 推动式消费（Push Consumer）"></a>8 推动式消费（Push Consumer）</h2><p> Consumer 消费的一种类型，应用不需要主动调用 Consumer 的拉消息方法，在底层已经封装了拉取的调用逻辑，在用户层面看来是 broker 把消息推送过来的，其实底层还是 consumer 去 broker 主动拉取消息。</p>
-<h2 id="9-生产者组（Producer-Group）"><a href="#9-生产者组（Producer-Group）" class="headerlink" title="9 生产者组（Producer Group）"></a>9 生产者组（Producer Group）</h2><p>  同一类 Producer 的集合，这类 Producer 发送同一类消息且发送逻辑一致。如果发送的是事务消息且原始生产者在发送之后崩溃，则 Broker 服务器会联系同一生产者组的其他生产者实例以提交或回溯消费。</p>
-<h2 id="10-消费者组（Consumer-Group）"><a href="#10-消费者组（Consumer-Group）" class="headerlink" title="10 消费者组（Consumer Group）"></a>10 消费者组（Consumer Group）</h2><p>  同一类 Consumer 的集合，这类 Consumer 通常消费同一类消息且消费逻辑一致。消费者组使得在消息消费方面，实现负载均衡和容错的目标变得非常容易。要注意的是，消费者组的消费者实例必须订阅完全相同的 Topic。RocketMQ 支持两种消息模式：集群消费（Clustering）和广播消费（Broadcasting）。</p>
-<h2 id="11-集群消费（Clustering）"><a href="#11-集群消费（Clustering）" class="headerlink" title="11 集群消费（Clustering）"></a>11 集群消费（Clustering）</h2><p>集群消费模式下，相同 Consumer Group 的每个 Consumer 实例平均分摊消息。</p>
-<h2 id="12-广播消费（Broadcasting）"><a href="#12-广播消费（Broadcasting）" class="headerlink" title="12 广播消费（Broadcasting）"></a>12 广播消费（Broadcasting）</h2><p>广播消费模式下，相同 Consumer Group 的每个 Consumer 实例都接收全量的消息。</p>
-<h2 id="13-普通顺序消息（Normal-Ordered-Message）"><a href="#13-普通顺序消息（Normal-Ordered-Message）" class="headerlink" title="13 普通顺序消息（Normal Ordered Message）"></a>13 普通顺序消息（Normal Ordered Message）</h2><p>普通顺序消费模式下，消费者通过同一个消息队列（ Topic 分区，称作 Message Queue） 收到的消息是有顺序的，不同消息队列收到的消息则可能是无顺序的。</p>
-<h2 id="14-严格顺序消息（Strictly-Ordered-Message）"><a href="#14-严格顺序消息（Strictly-Ordered-Message）" class="headerlink" title="14 严格顺序消息（Strictly Ordered Message）"></a>14 严格顺序消息（Strictly Ordered Message）</h2><p>严格顺序消息模式下，消费者收到的所有消息均是有顺序的。</p>
-<h2 id="15-消息（Message）"><a href="#15-消息（Message）" class="headerlink" title="15 消息（Message）"></a>15 消息（Message）</h2><p>消息系统所传输信息的物理载体，生产和消费数据的最小单位，每条消息必须属于一个主题。RocketMQ 中每个消息拥有唯一的 Message ID，且可以携带具有业务标识的 Key。系统提供了通过 Message ID 和 Key 查询消息的功能。</p>
-<h2 id="16-标签（Tag）"><a href="#16-标签（Tag）" class="headerlink" title="16 标签（Tag）"></a>16 标签（Tag）</h2><p> 为消息设置的标志，用于同一主题下区分不同类型的消息。来自同一业务单元的消息，可以根据不同业务目的在同一主题下设置不同标签。标签能够有效地保持代码的清晰度和连贯性，并优化 RocketMQ 提供的查询系统。消费者可以根据 Tag 实现对不同子主题的不同消费逻辑，实现更好的扩展性。</p>
-<p>代码：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">producer.WithInterceptor(pc.interceptors...),</span><br><span class="line">		producer.WithInstanceName(pc.InstanceName),</span><br><span class="line">		producer.WithCredentials(primitive.Credentials&#123;</span><br><span class="line">			AccessKey: pc.AccessKey,</span><br><span class="line">			SecretKey: pc.SecretKey,</span><br><span class="line">		&#125;),</span><br></pre></td></tr></table></figure>
-
-<p>遇到的问题：</p>
-<ol>
-<li>在控制台查询 Producer 时会出现 <code>producer []group not exist </code><br> 猜测：可能是控制台在连接 producer 时，producer 已经被关闭了，所以查找不到<br> 解决方案 1：注释掉代码中的 <code>producer.shutdown()</code>，<br> 解决方案 2：</li>
-<li>控制台收到消息的顺序似乎不是按时间排序<br> 猜测：可能是并发发送的信息。</li>
-<li>遇到生产者可以正常发送消息，但消费者无法接受消息，提示找不到对应的 topic。<br> 解决方案：将 <code>consumer.start</code> 放到 <code>consumer.subscribe</code> 之后</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/07/01/RocketMQ/" data-id="cly326aoy0000hc355z82gxrb" data-title="RocketMQ" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2024/07/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
     </a>
-  
-</nav>
 
-  
-</article>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
 
-
-</section>
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
         
-          <li>
-            <a href="/2024/07/01/RocketMQ/">RocketMQ</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
           </li>
+          
         
-          <li>
-            <a href="/2024/07/01/hello-world/">Hello World</a>
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
     </div>
   </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2024 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
 </nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="RocketMQ"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-07-01 22:10" pubdate>
+          July 1, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k words
+        
+      </span>
     
 
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 mins
+        
+      </span>
+    
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">RocketMQ</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="部署方式">部署方式</h1>
+<p>Docker-compose 方式部署：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker pull apacherocketmq/rocketmq-dashboard:latest<br>docker pull apache/rocketmq:latest<br></code></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.3&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">namesrv:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">apache/rocketmq:latest</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">rmqnamesrv</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">9876</span><span class="hljs-string">:9876</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">JAVA_OPT_EXT:</span> <span class="hljs-string">&quot;-server -Xms512m -Xmx512m&quot;</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/home/max/Desktop/rocketmq/broker/logs:/home/rocketmq/logs</span><br>    <span class="hljs-attr">command:</span> <span class="hljs-string">sh</span> <span class="hljs-string">mqnamesrv</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>  <span class="hljs-attr">broker1:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">apache/rocketmq:latest</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">rmqbroker</span><br>    <span class="hljs-attr">links:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">namesrv</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">10909</span><span class="hljs-string">:10909</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">10911</span><span class="hljs-string">:10911</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">10912</span><span class="hljs-string">:10912</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">NAMESRV_ADDR:</span> <span class="hljs-string">namesrv:9876</span><br>      <span class="hljs-attr">JAVA_OPT_EXT:</span> <span class="hljs-string">&quot;-server -Xms512m -Xmx512m&quot;</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/home/max/Desktop/rocketmq/broker/logs:/home/rocketmq/logs</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/home/max/Desktop/rocketmq/broker/store:/home/rocketmq/store</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/home/max/Desktop/rocketmq/broker/conf/broker.conf:/opt/rocketmq/conf/broker.conf</span><br>    <span class="hljs-attr">command:</span> <span class="hljs-string">sh</span> <span class="hljs-string">mqbroker</span> <span class="hljs-string">-c</span> <span class="hljs-string">/opt/rocketmq/conf/broker.conf</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>  <span class="hljs-attr">dashbord:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">apacherocketmq/rocketmq-dashboard:latest</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">8080</span><span class="hljs-string">:8080</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">JAVA_OPTS:</span> <span class="hljs-string">&quot;-Drocketmq.namesrv.addr=namesrv:9876&quot;</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br><br></code></pre></td></tr></table></figure>
+<h1 id="rocketmq-基础概念：">RocketMQ 基础概念：</h1>
+<h1 id="基本概念">基本概念</h1>
+<hr>
+<h2 id="1-消息模型（message model）">1 消息模型（Message Model）</h2>
+<p>RocketMQ 主要由 Producer、Broker、Consumer 三部分组成，其中 Producer 负责生产消息，Consumer 负责消费消息，Broker 负责存储消息。Broker 在实际部署过程中对应一台服务器，每个 Broker 可以存储多个 Topic 的消息，每个 Topic 的消息也可以分片存储于不同的 Broker。Message Queue 用于存储消息的物理地址，每个 Topic 中的消息地址存储于多个 Message Queue 中。ConsumerGroup 由多个 Consumer 实例构成。</p>
+<h2 id="2-消息生产者（producer）">2 消息生产者（Producer）</h2>
+<p>负责生产消息，一般由业务系统负责生产消息。一个消息生产者会把业务应用系统里产生的消息发送到 broker 服务器。RocketMQ 提供多种发送方式，同步发送、异步发送、顺序发送、单向发送。同步和异步方式均需要 Broker 返回确认信息，单向发送不需要。</p>
+<h2 id="3-消息消费者（consumer）">3 消息消费者（Consumer）</h2>
+<p>负责消费消息，一般是后台系统负责异步消费。一个消息消费者会从 Broker 服务器拉取消息、并将其提供给应用程序。从用户应用的角度而言提供了两种消费形式：拉取式消费、推动式消费。</p>
+<h2 id="4-主题（topic）">4 主题（Topic）</h2>
+<p>表示一类消息的集合，每个主题包含若干条消息，每条消息只能属于一个主题，是 RocketMQ 进行消息订阅的基本单位。</p>
+<h2 id="5-代理服务器（broker server）">5 代理服务器（Broker Server）</h2>
+<p>消息中转角色，负责存储消息、转发消息。代理服务器在 RocketMQ 系统中负责接收从生产者发送来的消息并存储、同时为消费者的拉取请求作准备。代理服务器也存储消息相关的元数据，包括消费者组、消费进度偏移和主题和队列消息等。</p>
+<h2 id="6-名字服务（name server）">6 名字服务（Name Server）</h2>
+<p>名称服务充当路由消息的提供者。生产者或消费者能够通过名字服务查找各主题相应的 Broker IP 列表。多个 Namesrv 实例组成集群，但相互独立，没有信息交换。</p>
+<h2 id="7-拉取式消费（pull consumer）">7 拉取式消费（Pull Consumer）</h2>
+<p>Consumer 消费的一种类型，应用通常主动调用 Consumer 的拉消息方法从 Broker 服务器拉消息、主动权由应用控制。一旦获取了批量消息，应用就会启动消费过程。</p>
+<h2 id="8-推动式消费（push consumer）">8 推动式消费（Push Consumer）</h2>
+<p>Consumer 消费的一种类型，应用不需要主动调用 Consumer 的拉消息方法，在底层已经封装了拉取的调用逻辑，在用户层面看来是 broker 把消息推送过来的，其实底层还是 consumer 去 broker 主动拉取消息。</p>
+<h2 id="9-生产者组（producer group）">9 生产者组（Producer Group）</h2>
+<p>同一类 Producer 的集合，这类 Producer 发送同一类消息且发送逻辑一致。如果发送的是事务消息且原始生产者在发送之后崩溃，则 Broker 服务器会联系同一生产者组的其他生产者实例以提交或回溯消费。</p>
+<h2 id="10-消费者组（consumer group）">10 消费者组（Consumer Group）</h2>
+<p>同一类 Consumer 的集合，这类 Consumer 通常消费同一类消息且消费逻辑一致。消费者组使得在消息消费方面，实现负载均衡和容错的目标变得非常容易。要注意的是，消费者组的消费者实例必须订阅完全相同的 Topic。RocketMQ 支持两种消息模式：集群消费（Clustering）和广播消费（Broadcasting）。</p>
+<h2 id="11-集群消费（clustering）">11 集群消费（Clustering）</h2>
+<p>集群消费模式下，相同 Consumer Group 的每个 Consumer 实例平均分摊消息。</p>
+<h2 id="12-广播消费（broadcasting）">12 广播消费（Broadcasting）</h2>
+<p>广播消费模式下，相同 Consumer Group 的每个 Consumer 实例都接收全量的消息。</p>
+<h2 id="13-普通顺序消息（normal ordered message）">13 普通顺序消息（Normal Ordered Message）</h2>
+<p>普通顺序消费模式下，消费者通过同一个消息队列（ Topic 分区，称作 Message Queue） 收到的消息是有顺序的，不同消息队列收到的消息则可能是无顺序的。</p>
+<h2 id="14-严格顺序消息（strictly ordered message）">14 严格顺序消息（Strictly Ordered Message）</h2>
+<p>严格顺序消息模式下，消费者收到的所有消息均是有顺序的。</p>
+<h2 id="15-消息（message）">15 消息（Message）</h2>
+<p>消息系统所传输信息的物理载体，生产和消费数据的最小单位，每条消息必须属于一个主题。RocketMQ 中每个消息拥有唯一的 Message ID，且可以携带具有业务标识的 Key。系统提供了通过 Message ID 和 Key 查询消息的功能。</p>
+<h2 id="16-标签（tag）">16 标签（Tag）</h2>
+<p>为消息设置的标志，用于同一主题下区分不同类型的消息。来自同一业务单元的消息，可以根据不同业务目的在同一主题下设置不同标签。标签能够有效地保持代码的清晰度和连贯性，并优化 RocketMQ 提供的查询系统。消费者可以根据 Tag 实现对不同子主题的不同消费逻辑，实现更好的扩展性。</p>
+<p>代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Go">producer.WithInterceptor(pc.interceptors...),<br>		producer.WithInstanceName(pc.InstanceName),<br>		producer.WithCredentials(primitive.Credentials&#123;<br>			AccessKey: pc.AccessKey,<br>			SecretKey: pc.SecretKey,<br>		&#125;),<br></code></pre></td></tr></table></figure>
+<p>遇到的问题：</p>
+<ol>
+<li>在控制台查询 Producer 时会出现 <code>producer []group not exist </code><br>
+猜测：可能是控制台在连接 producer 时，producer 已经被关闭了，所以查找不到<br>
+解决方案 1：注释掉代码中的 <code>producer.shutdown()</code>，<br>
+解决方案 2：</li>
+<li>控制台收到消息的顺序似乎不是按时间排序<br>
+猜测：可能是并发发送的信息。</li>
+<li>遇到生产者可以正常发送消息，但消费者无法接受消息，提示找不到对应的 topic。<br>
+解决方案：将 <code>consumer.start</code> 放到 <code>consumer.subscribe</code> 之后</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>RocketMQ</div>
+      <div>http://example.com/2024/07/01/RocketMQ/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Chicc</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 1, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/07/01/hello-world/" title="Hello World">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
 
 
 
 
-<script src="/js/script.js"></script>
 
 
 
+    
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
   </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>
