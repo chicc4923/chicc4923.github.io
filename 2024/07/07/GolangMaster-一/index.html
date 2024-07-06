@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>GolangMaster(一) | 垆边人似月</title><meta name="author" content="Chicc"><meta name="copyright" content="Chicc"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Golang Master Lecture Series 1 后端开发教程，技术栈：  Golang-Docker-Postgres  本课程主要通过上述技术栈对一个完整的后端项目进行设计、开发并部署。 构建一个简单的银行系统 这个简单的银行系统将为前端提供 API，并执行以下操作：  Create and manage account owner,balance,currency Record">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GolangMaster(一)">
+<meta property="og:url" content="https://chicc4923.github.io/2024/07/07/GolangMaster-%E4%B8%80/index.html">
+<meta property="og:site_name" content="垆边人似月">
+<meta property="og:description" content="Golang Master Lecture Series 1 后端开发教程，技术栈：  Golang-Docker-Postgres  本课程主要通过上述技术栈对一个完整的后端项目进行设计、开发并部署。 构建一个简单的银行系统 这个简单的银行系统将为前端提供 API，并执行以下操作：  Create and manage account owner,balance,currency Record">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://chicc4923.github.io/img/face.jpg">
+<meta property="article:published_time" content="2024-07-06T18:05:30.000Z">
+<meta property="article:modified_time" content="2024-07-06T18:06:27.855Z">
+<meta property="article:author" content="Chicc">
+<meta property="article:tag" content="Golang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chicc4923.github.io/img/face.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://chicc4923.github.io/2024/07/07/GolangMaster-%E4%B8%80/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'GolangMaster(一)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-07 02:06:27'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/face.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/archive_page.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="垆边人似月"><span class="site-name">垆边人似月</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">GolangMaster(一)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-06T18:05:30.000Z" title="发表于 2024-07-07 02:05:30">2024-07-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-06T18:06:27.855Z" title="更新于 2024-07-07 02:06:27">2024-07-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/GolangMaster/">GolangMaster</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="GolangMaster(一)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="golang-master lecture series 1">Golang Master Lecture Series 1</h1>
+<p>后端开发教程，技术栈：</p>
+<blockquote>
+<p>Golang-Docker-Postgres</p>
+</blockquote>
+<p>本课程主要通过上述技术栈对一个完整的后端项目进行设计、开发并部署。</p>
+<h1 id="构建一个简单的银行系统">构建一个简单的银行系统</h1>
+<p>这个简单的银行系统将为前端提供 API，并执行以下操作：</p>
+<ol>
+<li>Create and manage account<br>
+owner,balance,currency</li>
+<li>Record all balance changes<br>
+Create an account entry for each change</li>
+<li>Money transfer transaction<br>
+Perform money transfer between 2 accounts consistently within a transcation</li>
+</ol>
+<h2 id="1-数据库设计">1. 数据库设计</h2>
+<p>学习目标：</p>
+<ol>
+<li>如何使用 <a target="_blank" rel="noopener" href="https://dbdiagram.io/">dbdiagram.io</a> 设计 SQL 数据库架构。</li>
+<li>然后将架构另存为 png 或者 pdf 图表。</li>
+<li>生成 sql 代码在选择的数据库引擎中创建架构。比如 mysql，postgres，sqlserver</li>
+</ol>
+<h3 id="11-从 dbdiagram.io 开始">1.1 从 <a target="_blank" rel="noopener" href="http://dbdiagram.io">dbdiagram.io</a> 开始</h3>
+<p>首先设计账户表（accounts）<br>
+这个表将记录用户账户的创建时间、拥有者，货币名称，余额。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Table accounts as A &#123;</span><br><span class="line">id bigserial [pk]</span><br><span class="line">owner varchar [not null]</span><br><span class="line">currency Currency [not null]</span><br><span class="line">balance bigint [not null]</span><br><span class="line">created_at timestamptz [not null,default: `now()`]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 添加索引，账户表我们希望对用户名进行搜索</span><br><span class="line">Indexes &#123;</span><br><span class="line">owner</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后是条目表（entries）：<br>
+这个表将记录账户余额的所有更改，所以需要一个自增 ID，与账户表 id 关联的外键，创建时间和更改数目，这个更改数目可以是正数，也可以是负数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Table entries &#123;</span><br><span class="line">id bigserial [pk] // 代表自增int</span><br><span class="line">account_id bigint [ref: &gt; A.id]</span><br><span class="line">// bigint类型的外键，引用账户表的id列，这表示account表和entries表是一对多的关系</span><br><span class="line">created_at timestamp [not null,default: `now()`]</span><br><span class="line">amount bigint [not null] // 可以是整数，可以是负数</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">Indexes &#123;</span><br><span class="line">account_id</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后一张表为转账表（transfers）<br>
+这张表只记录发生在银行内部的转账，需要一个自增主键，来款账户和去款账户以及转账金额和创建时间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Table transfers &#123;</span><br><span class="line">id bigserial [pk]</span><br><span class="line">from_account_id bigint [ref: &gt; A.id] // 来自哪个账户</span><br><span class="line">to_account_id bigint [ref: &gt; A.id] // 转向哪个账户</span><br><span class="line">amount bigint [not null] // 转账金额必须为正</span><br><span class="line">created_at timestamptz [not null,default: `now()`]</span><br><span class="line"></span><br><span class="line">Indexes &#123;</span><br><span class="line">from_account_id</span><br><span class="line">to_account_id</span><br><span class="line">(from_account_id,to_account_id) // 复合索引：在两个账户间的转账</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后可以直接导出为 postgres sql 语句或 mysql 语句</p>
+<h3 id="2-完善环境">2. 完善环境</h3>
+<p>安装 Docker、Postgres、TablePlus 等开发工具<br>
+运行 postgres 镜像：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name local-pg -p 5432:5432 -e POSTGRES_PASSWORD=admin123 -e POSTGRES_USER=root -d registry.ap-southeast-1.aliyuncs.com/chicc_deploy/linux_arm64_postgres</span><br></pre></td></tr></table></figure>
+<h3 id="3-使用 golang 编写并运行数据库迁移">3. 使用 Golang 编写并运行数据库迁移</h3>
+<p>首先安装 <a target="_blank" rel="noopener" href="https://github.com/golang-migrate/migrate">migrate</a> 库，按照官方文档的方式下载 cli 工具到本地。<br>
+主要参数：</p>
+<ol>
+<li>create</li>
+<li>up</li>
+<li>down<br>
+安装后可以使用 <code>migrate -version</code> 来查看安装版本，然后创建一个目录 <code>db/migration</code><br>
+创建项目文件目录后，输入以下指令来创建数据库迁移：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">migrate create -ext sql -<span class="built_in">dir</span> db/migration -<span class="built_in">seq</span> init_schema</span><br><span class="line"><span class="comment"># 参数含义：create 创建</span></span><br><span class="line"><span class="comment"># -ext 文件后缀</span></span><br><span class="line"><span class="comment"># -dir 生成文件的路径</span></span><br><span class="line"><span class="comment"># -seq 迁移文件版本号</span></span><br></pre></td></tr></table></figure>
+<p>输入后可以看到会生成两个文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">000001_init_schema.down.sql 000001_init_schema.up.sql</span><br></pre></td></tr></table></figure>
+<p>其中 001 是版本号，后面是文件名，sql 就是设置的后缀，还有一个是 up，一个是 down。<br>
+分别生成 up 和 down 是编写数据库时的最佳实践，运行 <code>up</code> 文件来对数据库进行前向更改，如果需要回滚，就运行 <code>down</code> 文件。<br>
+所以当我们运行 <code>migrate up</code> 时，就会执行这个文件目录下的 <code>up</code> 文件，然后按照前缀的版本号依次运行，反之亦然。<br>
+然后将章节一中设计的 sql 文件复制到 <code>up</code> 文件内。而 <code>down</code> 应该回滚 <code>up</code> 文件中所作的更改，所以需要删除新建的表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> entries;</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> transfers;</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> accounts;</span><br></pre></td></tr></table></figure>
+<p>然后就可以运行迁移命令。<br>
+在确保 postgres 是运行状态后，可以使用 <code>docker exec</code> 命令访问它的 shell。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it postgres-container-name /bin/sh</span><br></pre></td></tr></table></figure>
+<p>然后创建新的数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">createdb --username=root --owner=root  simple_bank</span><br><span class="line"><span class="comment"># 用户名，所有者，数据库名称</span></span><br><span class="line"></span><br><span class="line">psql simple_bank</span><br><span class="line"></span><br><span class="line">dropdb simple_bank <span class="comment"># 删除数据库</span></span><br><span class="line"><span class="built_in">exit</span> <span class="comment"># 退出shell</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以直接在命令行中直接使用exec命令执行创建数据库</span></span><br><span class="line">docker <span class="built_in">exec</span> -it postgres-container-name createdb --username=root --owner==root  simple_bank</span><br><span class="line"><span class="comment"># 同样，访问数据库而不用进入容器</span></span><br><span class="line">docker <span class="built_in">exec</span> -it  postgres-container-name psql -U root simple_bank</span><br></pre></td></tr></table></figure>
+<p>接着在项目中创建一个 <code>Makefile</code> 来集成这些命令。方便协同开发。</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">createdb:</span></span><br><span class="line">    docker exec -it postgres-container-name createdb --username=root --owner==root  simple_bank</span><br><span class="line"></span><br><span class="line"><span class="section">dropdb:</span></span><br><span class="line">   docker exec -it postgres-container-name dropdb simple_bank</span><br><span class="line"></span><br><span class="line"><span class="meta"><span class="keyword">.PHONY</span>: createdb dropdb</span></span><br></pre></td></tr></table></figure>
+<p>然后可以尝试执行这些 make 指令<br>
+然后可以再将第二章的创建 postgres 容器命令放入 Makefile</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">postgres:</span></span><br><span class="line">    docker run --name local-pg -p 5432 -e POSTGRES_PASSWORD=admin123 -e\ POSTGRES_USER=root -d registry.ap-southeast-1.aliyuncs.com/chicc_deploy/linux_arm64_postgres</span><br><span class="line"><span class="section">createdb:</span></span><br><span class="line">    docker exec -it postgres-container-name createdb --username=root --owner=root  simple_bank</span><br><span class="line"></span><br><span class="line"><span class="section">dropdb:</span></span><br><span class="line">   docker exec -it postgres-container-name dropdb simple_bank</span><br><span class="line"></span><br><span class="line"><span class="meta"><span class="keyword">.PHONY</span>: postgres createdb dropdb</span></span><br></pre></td></tr></table></figure>
+<p>停止并删除当前 postgres 的容器镜像，执行 Makefile 中的命令来创建对应的数据库环境。<br>
+然后使用 tableplus 来连接数据库，此时数据库内容应该为空。</p>
+<p>执行完以上的命令后，我们就可以进行数据库迁移了。<br>
+执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">migrate -path db/migration -database <span class="string">&quot;postgresql://root:admin123@localhost:5432/simple_bank?sslmode=disable&quot;</span> -verbose up</span><br><span class="line"></span><br><span class="line"><span class="comment"># -path 指定迁移文件路径</span></span><br><span class="line"><span class="comment"># -database 指定数据库连接</span></span><br><span class="line"><span class="comment"># -verbose 打印迁移的日志记录</span></span><br><span class="line"><span class="comment"># up 执行哪个迁移脚本</span></span><br></pre></td></tr></table></figure>
+<p>现在，数据库中应该已经成功将四张表迁移过去了。<br>
+其中，三张表是我们业务需要的表，还有一张 <code>schema_migrations</code> 表存储最新应用的迁移版本。<br>
+然后将迁移指令和回滚指令写入到 Makefile</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">postgres:</span></span><br><span class="line">    docker run --name local-pg -p 5432 -e POSTGRES_PASSWORD=admin123 -e\ POSTGRES_USER=root -d registry.ap-southeast-1.aliyuncs.com/chicc_deploy/linux_arm64_postgres</span><br><span class="line"><span class="section">createdb:</span></span><br><span class="line">    docker exec -it postgres-container-name createdb --username=root --owner==root  simple_bank</span><br><span class="line"></span><br><span class="line"><span class="section">dropdb:</span></span><br><span class="line">   docker exec -it postgres-container-name dropdb simple_bank</span><br><span class="line">   </span><br><span class="line"><span class="section">migrateup:</span></span><br><span class="line">   migrate -path db/migration -database <span class="string">&quot;postgresql://root:admin123@localhost:5432/simple_bank?sslmode=disable&quot;</span> -verbose up</span><br><span class="line"></span><br><span class="line"><span class="section">migratedown:</span></span><br><span class="line">   migrate -path db/migration -database <span class="string">&quot;postgresql://root:admin123@localhost:5432/simple_bank?sslmode=disable&quot;</span> -verbose down</span><br><span class="line"><span class="meta"><span class="keyword">.PHONY</span>: postgres createdb dropdb migrateup migratedown</span></span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://chicc4923.github.io">Chicc</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://chicc4923.github.io/2024/07/07/GolangMaster-%E4%B8%80/">https://chicc4923.github.io/2024/07/07/GolangMaster-%E4%B8%80/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://chicc4923.github.io" target="_blank">垆边人似月</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Golang/">Golang</a></div><div class="post_share"><div class="social-share" data-image="/img/face.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/07/05/Linux%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" title="Linux启动流程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux启动流程</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/face.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Chicc</div><div class="author-info__description">醉后不知天在水，满船星梦压清河。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/chicc4923"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://chicc4923.github.io" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/ccc2659534616@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">一个无趣的人。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#golang-master%20lecture%20series%201"><span class="toc-number">1.</span> <span class="toc-text">Golang Master Lecture Series 1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E9%93%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.</span> <span class="toc-text">构建一个简单的银行系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.1.</span> <span class="toc-text">1. 数据库设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E4%BB%8E%20dbdiagram.io%20%E5%BC%80%E5%A7%8B"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.1 从 dbdiagram.io 开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%8C%E5%96%84%E7%8E%AF%E5%A2%83"><span class="toc-number">2.1.2.</span> <span class="toc-text">2. 完善环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%20golang%20%E7%BC%96%E5%86%99%E5%B9%B6%E8%BF%90%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB"><span class="toc-number">2.1.3.</span> <span class="toc-text">3. 使用 Golang 编写并运行数据库迁移</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/07/GolangMaster-%E4%B8%80/" title="GolangMaster(一)">GolangMaster(一)</a><time datetime="2024-07-06T18:05:30.000Z" title="发表于 2024-07-07 02:05:30">2024-07-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/05/Linux%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" title="Linux启动流程">Linux启动流程</a><time datetime="2024-07-04T16:34:04.000Z" title="发表于 2024-07-05 00:34:04">2024-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/03/Docker%E5%9F%BA%E7%A1%80/" title="Docker基础">Docker基础</a><time datetime="2024-07-02T16:25:21.000Z" title="发表于 2024-07-03 00:25:21">2024-07-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/01/RocketMQ/" title="RocketMQ">RocketMQ</a><time datetime="2024-07-01T14:10:50.000Z" title="发表于 2024-07-01 22:10:50">2024-07-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/01/hello-world/" title="Hello World">Hello World</a><time datetime="2024-07-01T13:54:38.176Z" title="发表于 2024-07-01 21:54:38">2024-07-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Chicc</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
